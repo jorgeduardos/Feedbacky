@@ -14,9 +14,11 @@ mongoose.connect(keys.mongoURI);
 
 const app = express();
 
+//telling our server to use cookies
 app.use(
 	cookieSession({
 		maxAge: 30 * 24 * 60 * 60 * 1000,
+		//ecryption key
 		keys: [keys.cookieKey]
 	})
 );

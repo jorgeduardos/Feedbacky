@@ -3,8 +3,7 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const mongoose = require("mongoose");
 const keys = require("../config/keys.js");
 
-// tell passport to use coockies
-
+// making use (fetching data) out of our db collection name 'users'
 const User = mongoose.model("users");
 
 // defining serializeUser function so passport can attach token to coockie
@@ -18,13 +17,12 @@ passport.deserializeUser((id, done) => {
 	});
 });
 
-//Configuring the googleStrategy using passport
+//Configuring the googleStrategy using passport (talling passport to use googleStrategy)
 passport.use(
 	//creating new instance of googleStrategy
 	new GoogleStrategy(
-		// googleStartegy accepts an object as a parameter which cointains the id,
-		// secret and callback that is going to be used to redirect to our app
-		//the second parameter is a callback function that returns the profile os the user loging using google
+		// googleStartegy accepts an object as a parameter which cointains the id, secret and callback url that is going to be used to redirect to our app,
+		//the second parameter is a callback function that returns the profile of the user loging using googleOauth
 		{
 			clientID: keys.googleClientID,
 			clientSecret: keys.googleClientSecret,
