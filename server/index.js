@@ -23,6 +23,7 @@ app.use(
 	})
 );
 
+// initilize authentication module "passport"
 app.use(passport.initialize());
 app.use(passport.session());
 

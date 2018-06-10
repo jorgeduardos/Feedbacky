@@ -14,4 +14,13 @@ module.exports = app => {
 	//seting callback route when google answers the authentication
 	//passport handles using googleStrategy
 	app.get("/auth/google/callback", passport.authenticate("google"));
+
+	app.get("/api/logout", (req, res) => {
+		req.logout();
+		res.send(req.user);
+	});
+
+	app.get("/api/current_user", (req, res) => {
+		res.send(req.user);
+	});
 };
