@@ -29,19 +29,17 @@ passport.use(
 			callbackURL: "/auth/google/callback",
 			proxy: true
 		},
-		(accessToken, refreshToken, profile, done) => {
-			//mongoose query to see if that id exists already
-			User.findOne({ googleId: profile.id }).then(existingUser => {
-				if (existingUser) {
-					done(null, existingUser);
-				} else {
-					// instanciating new user and saving id to db
-					// receiving promise and calling done so passport knows we are done
-					new User({ googleId: profile.id })
-						.save()
-						.then(user => done(null, user));
-				}
-			});
+		async (accessToken, refreshToken, profile, done) => {
+			//mongoose query to see if that id exists already (asyncronous function, returns a promise)
+			const existingUser = await User.findOne({ googleId: profile.id });
+			if (existingUser) {
+				done(null, existingUser);
+			} else {
+				// instanciating new user and saving id to db
+				// receiving promise and calling done so passport knows we are done
+				const user = await new User({ googleId: profile.id }).save();
+				done(null, user);
+			}
 		}
 	)
 );
