@@ -8,6 +8,7 @@ const keys = require("./config/keys");
 
 // since passport is not returning anything, there is no need to assign it to a variable
 require("./models/User.js");
+require("./models/Survey.js");
 require("./services/passport.js");
 
 //telling mongoose to connect to our db
