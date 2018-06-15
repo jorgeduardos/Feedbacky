@@ -11,7 +11,9 @@
     "start": "cd server && node index.js",
     "server": "cd server && nodemon index.js",
     "client": "cd server/client && npm run start",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild":
+      "NPM_CONFIG_PRODUCTION=false cd server/client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",

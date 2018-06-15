@@ -33,6 +33,17 @@ app.use(passport.session());
 require("./routes/authRoutes.js")(app);
 require("./routes/billingRoutes.js")(app);
 
+//  handling react routes correctly by the server in production
+if (process.env.NODE_ENV === "production") {
+	// Express will serve up production assests
+	app.use(express.static("client/build"));
+	// Express will serve up the index.html file if it doesn't recognize the route
+	const path = require(" path");
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+	});
+}
+
 //telling the app to listen to port using enviromental variable, use port 5000 otherwise
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
