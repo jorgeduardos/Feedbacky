@@ -5,5 +5,6 @@ module.exports = {
 	// random generated cookie key
 	cookieKey: process.env.COOKIE_KEY,
 	stripePublishedKey: process.env.STRIPE_PUBLISHED_KEY,
-	stripeSecretKey: process.env.STRIPE_SECRET_KEY
+	stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+	sendGridKey: process.env.STRIPE_SECRET_KEY
 };

@@ -1,4 +1,4 @@
-import recipientSchema = require('./Recipient.js');
+const recipientSchema = require("./Recipient.js");
 
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
@@ -12,7 +12,7 @@ const surveySchema = new Schema({
 	yes: { type: Number, default: 0 },
 	no: { type: Number, default: 0 },
 	// this tell mongoose that the survey schema belongs to a specific user (user that created the survey)
-	_user: {type: Schema.Types.ObjectId, ref: 'User' },
+	_user: { type: Schema.Types.ObjectId, ref: "User" },
 	dateSent: Date,
 	lastResponded: Date
 });
