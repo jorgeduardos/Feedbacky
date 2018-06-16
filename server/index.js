@@ -33,6 +33,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes.js")(app);
 require("./routes/billingRoutes.js")(app);
+require("./routes/surveysRoutes.js")(app);
 
 //  handling react routes correctly by the server in production
 if (process.env.NODE_ENV === "production") {
